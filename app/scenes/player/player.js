@@ -45,6 +45,12 @@ export default class Player extends AbstractScene {
 		this._osd = this._createOsd();
 
 		/**
+		 * @type {?string}
+		 * @private
+		 */
+		this._url = null;
+
+		/**
 		 * @type {?function()}
 		 * @private
 		 */
@@ -144,6 +150,8 @@ export default class Player extends AbstractScene {
 	 */
 	setData(title, url) {
 		text(this._exported.title, title);
+
+		this._url = url;
 		this._video.play(url);
 	}
 
@@ -334,6 +342,10 @@ export default class Player extends AbstractScene {
 	 * @private
 	 */
 	_onError(eventName, description) {
+		if (!this._url && description === 'NETWORK_NO_SOURCE') {
+			return;
+		}
+
 		if (this._bufferingPromiseResolve) {
 			this._bufferingPromiseResolve();
 		}
