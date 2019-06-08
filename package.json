@@ -1,0 +1,21 @@
+{
+  "name": "playontv-app",
+  "version": "1.0.0",
+  "description": "Player application for Smart TV",
+  "author": "Andrew Motoshin <andrew@htmlhero.ru>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:htmlhero/playontv-app.git"
+  },
+  "keywords": [
+    "tv",
+    "smart tv",
+    "samsung",
+    "orsay"
+  ],
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">=5.2.0"
+  }
+}
