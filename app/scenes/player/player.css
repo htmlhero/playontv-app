@@ -1,0 +1,29 @@
+.s-player {}
+	.s-player__title {
+		background: rgba(0, 0, 0, .8);
+		font-size: 26px;
+		line-height: 62px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: none;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		padding: 0 23px;
+	}
+	.s-player__shadow {
+		height: 112px;
+		background: rgba(0, 0, 0, .8);
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	.s-player__controls {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}

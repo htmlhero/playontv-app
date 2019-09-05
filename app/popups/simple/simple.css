@@ -1,0 +1,43 @@
+.p-simple {
+	background: rgba(0, 0, 0, .9);
+}
+	.p-simple__container {
+		width: 450px;
+		background-color: #ddd;
+		font-size: 18px;
+		color: #000;
+		box-sizing: border-box;
+		overflow: hidden;
+		box-shadow: 0 0 15px rgba(255, 255, 255, .3);
+		border-radius: 2px;
+	}
+	.p-simple__title {
+		font-size: 22px;
+		font-weight: bold;
+		padding: 15px 15px 0;
+	}
+	.p-simple__message {
+		padding: 15px 15px 0;
+	}
+	.p-simple__foot {
+		overflow: hidden;
+		padding: 15px;
+	}
+	.p-simple__buttons {
+		float: right;
+	}
+	.p-simple .w-zbui-button {
+		font-size: 18px;
+		line-height: 1;
+		color: #000;
+		text-align: center;
+		white-space: nowrap;
+		float: left;
+		padding: 6px 15px;
+		margin-left: 15px;
+		border-radius: 2px;
+	}
+	.p-simple .w-zbui-button._active {
+		background-color: #af1820;
+		color: #ddd;
+	}

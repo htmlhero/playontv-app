@@ -17,5 +17,29 @@
   "engines": {
     "node": ">=8.0.0",
     "npm": ">=5.2.0"
+  },
+  "scripts": {
+    "start": "zombiebox run",
+    "lint": "eslint app scripts config.js",
+    "check": "zombiebox build pc --config.gcc.checks_only",
+    "build:samsung": "zombiebox build samsung",
+    "serve:samsung": "http-server ./dist/1.0.0/samsung/ -p 80"
+  },
+  "dependencies": {
+    "http-server": "0.11.1",
+    "zombiebox": "2.2.0",
+    "zombiebox-extension-cutejs": "1.2.0",
+    "zombiebox-extension-ui": "2.1.0",
+    "zombiebox-platform-pc": "2.1.0",
+    "zombiebox-platform-samsung": "2.1.1"
+  },
+  "devDependencies": {
+    "eslint": "6.3.0",
+    "eslint-config-interfaced": "2.0.0-beta.2",
+    "eslint-import-resolver-zombiebox": "1.0.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-interfaced": "2.0.0-beta.1",
+    "eslint-plugin-jsdoc": "15.8.3",
+    "eslint-plugin-node": "9.1.0"
   }
 }

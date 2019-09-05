@@ -1,0 +1,63 @@
+.w-zbui-player-progress {
+	min-height: 46px;
+	position: relative;
+}
+	.w-zbui-player-progress__time,
+	.w-zbui-player-progress__duration {
+		font-size: 18px;
+		color: #fff;
+		padding: 10px 0;
+	}
+	.w-zbui-player-progress__time {
+		float: left;
+		margin-left: 23px;
+	}
+	.w-zbui-player-progress__duration {
+		text-align: right;
+		float: right;
+		margin-right: 23px;
+	}
+	.w-zbui-player-progress__area {
+		position: absolute;
+		top: 0;
+		right: 100px;
+		left: 100px;
+		padding: 20px 0;
+	}
+	.w-zbui-player-progress__bar {
+		height: 6px;
+		background-color: rgba(255, 255, 255, .3);
+		position: relative;
+		border-radius: 2px;
+	}
+	.w-zbui-player-progress__progress {
+		background-color: #aaa;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		border-radius: 2px;
+	}
+	.w-zbui-player-progress__thumb {
+		width: 18px;
+		height: 18px;
+		background-color: #aaa;
+		content: '';
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin: -9px -9px 0 0;
+		border-radius: 9px;
+		cursor: pointer;
+	}
+
+.w-zbui-player-progress._active {}
+	.w-zbui-player-progress._active .w-zbui-player-progress__bar {
+		background-color: rgba(255, 255, 255, .5);
+	}
+	.w-zbui-player-progress._active .w-zbui-player-progress__progress {
+		background-color: #fff;
+	}
+	.w-zbui-player-progress._active .w-zbui-player-progress__thumb {
+		background-color: #fff;
+	}

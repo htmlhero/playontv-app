@@ -1,5 +1,7 @@
 # Artifacts
 node_modules
+.generated
+dist
 
 # IDE
 .idea

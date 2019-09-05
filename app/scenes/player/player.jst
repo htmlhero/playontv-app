@@ -1,0 +1,10 @@
+{{+ import PlayerProgress from "tv/widgets/player-progress/player-progress"; }}
+{{+ import HelpBar from "ui/widgets/help-bar/help-bar"; }}
+
+<div class="s-player__title" data-export-id="{{@title}}"></div>
+<div class="s-player__shadow" data-export-id="{{@shadow}}">
+	<div class="s-player__controls">
+		{{% PlayerProgress, {}, progress }}
+		{{% HelpBar, {}, helpBar }}
+	</div>
+</div>

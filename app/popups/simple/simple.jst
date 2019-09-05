@@ -1,0 +1,40 @@
+{{+ import {Button as SimpleButton} from "tv/popups/simple/simple"; }}
+{{+ import UIButton from "ui/widgets/button/button"; }}
+
+{{* this.title Array<string> }}
+{{* this.message (Array<string>|undefined) }}
+{{* this.buttons Array<SimpleButton> }}
+
+<div class="zb-center">
+	<div class="zb-center__cell">
+		<div class="zb-center__container p-simple__container">
+			<div class="p-simple__title">
+				{{ this.title.forEach((paragraph, index) => { }}
+					{{ if (index > 0) { }}
+						<br />
+					{{ } }}
+					{{- paragraph }}
+				{{ }); }}
+			</div>
+			{{ if (this.message) { }}
+				<div class="p-simple__message">
+					{{ this.message.forEach((paragraph, index) => { }}
+						{{ if (index > 0) { }}
+							<br />
+						{{ } }}
+						{{- paragraph }}
+					{{ }); }}
+				</div>
+			{{ } }}
+			<div class="p-simple__foot">
+				<div class="p-simple__buttons">
+					{{ this.buttons.forEach((button) => { }}
+						<div data-component="{{% UIButton, {status: button.status}, buttons[] }}">
+							{{- button.title }}
+						</div>
+					{{ }); }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
