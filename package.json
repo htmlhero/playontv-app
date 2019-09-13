@@ -26,6 +26,7 @@
     "serve:samsung": "http-server ./dist/1.0.0/samsung/ -p 80"
   },
   "dependencies": {
+    "dotenv": "8.1.0",
     "http-server": "0.11.1",
     "zombiebox": "2.2.0",
     "zombiebox-extension-cutejs": "1.2.0",
