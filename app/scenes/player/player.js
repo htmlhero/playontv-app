@@ -2,13 +2,14 @@ import app from 'generated/app';
 import * as template from 'generated/cutejs/tv/scenes/player/player.jst';
 import Simple from 'tv/popups/simple/simple';
 import VideoService from 'tv/services/video';
-import {back, blue, red, pause, play} from 'tv/widgets/help-bar/help-bar-item-factory';
+import {back, blue, red, playPause} from 'tv/widgets/help-bar/help-bar-item-factory';
 import AbstractScene from 'cutejs/layers/abstract-scene';
 import Keys from 'zb/device/input/keys';
 import {State as IVideoState} from 'zb/device/interfaces/i-video';
 import {text} from 'zb/html';
 import {throttle} from 'ui/limit';
 import HelpBarItem from 'ui/widgets/help-bar/help-bar-item';
+import HelpBarItemPlayPause from 'tv/widgets/help-bar/help-bar-item-play-pause';
 import {PlayerOsd, State as PlayerOsdState} from './player-osd';
 
 
@@ -63,16 +64,10 @@ export default class Player extends AbstractScene {
 		this._onMoveOrClickTrottled;
 
 		/**
-		 * @type {HelpBarItem}
+		 * @type {HelpBarItemPlayPause}
 		 * @private
 		 */
-		this._helpBarItemPlay;
-
-		/**
-		 * @type {HelpBarItem}
-		 * @private
-		 */
-		this._helpBarItemPause;
+		this._helpBarItemPlayPause;
 
 		/**
 		 * @type {HelpBarItem}
@@ -195,13 +190,7 @@ export default class Player extends AbstractScene {
 			Keys.BACK
 		]);
 
-		this._helpBarItemPlay = play('Play', () => {
-			this._video.resume();
-		});
-
-		this._helpBarItemPause = pause('Pause', () => {
-			this._video.pause();
-		});
+		this._helpBarItemPlayPause = playPause('Play', 'Pause');
 
 		this._helpBarItemAspectRatio = red('Aspect ratio', () => {
 			this._video.toggleAspectRatio();
@@ -216,8 +205,7 @@ export default class Player extends AbstractScene {
 		});
 
 		this._exported.helpBar.setItems([
-			this._helpBarItemPlay,
-			this._helpBarItemPause,
+			this._helpBarItemPlayPause,
 			this._helpBarItemAspectRatio,
 			helpBarItemAbout,
 			helpBarItemExit
@@ -248,6 +236,7 @@ export default class Player extends AbstractScene {
 
 		this._osd.setVideo(video);
 		this._exported.progress.setPlayer(video);
+		this._helpBarItemPlayPause.setVideo(video);
 
 		if (this._video) {
 			this._video.off(this._video.EVENT_BUFFERING, this._onBuffering);
@@ -275,19 +264,13 @@ export default class Player extends AbstractScene {
 		switch (state) {
 			case IVideoState.PLAYING:
 			case IVideoState.BUFFERING:
-				this._helpBarItemPlay.hide();
-				this._helpBarItemPause.show();
-				this._helpBarItemAspectRatio.show();
-				break;
 			case IVideoState.PAUSED:
 			case IVideoState.SEEKING:
-				this._helpBarItemPlay.show();
-				this._helpBarItemPause.hide();
+				this._helpBarItemPlayPause.show();
 				this._helpBarItemAspectRatio.show();
 				break;
 			default:
-				this._helpBarItemPlay.hide();
-				this._helpBarItemPause.hide();
+				this._helpBarItemPlayPause.hide();
 				this._helpBarItemAspectRatio.hide();
 		}
 	}

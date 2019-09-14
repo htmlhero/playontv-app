@@ -1,6 +1,7 @@
 import app from 'generated/app';
 import Keys from 'zb/device/input/keys';
 import HelpBarItem, {Options as HelpBarItemOptions} from 'ui/widgets/help-bar/help-bar-item';
+import HelpBarItemPlayPause from 'tv/widgets/help-bar/help-bar-item-play-pause';
 
 
 /**
@@ -84,34 +85,20 @@ export const blue = (label, callback) => {
 
 
 /**
- * @param {string} label
- * @param {function()=} callback
- * @return {HelpBarItem}
+ * @param {string} playLabel
+ * @param {string} pauseLabel
+ * @return {HelpBarItemPlayPause}
  */
-export const play = (label, callback) => {
+export const playPause = (playLabel, pauseLabel) => {
 	const options = {
-		cssClass: '_play',
-		label: label,
-		keys: [Keys.PLAY]
+		playLabel,
+		playCssClass: '_play',
+		pauseLabel,
+		pauseCssClass: '_pause',
+		keys: [Keys.PLAY, Keys.PAUSE]
 	};
 
-	return item(options, callback);
-};
-
-
-/**
- * @param {string} label
- * @param {function()=} callback
- * @return {HelpBarItem}
- */
-export const pause = (label, callback) => {
-	const options = {
-		cssClass: '_pause',
-		label: label,
-		keys: [Keys.PAUSE]
-	};
-
-	return item(options, callback);
+	return new HelpBarItemPlayPause(options);
 };
 
 
